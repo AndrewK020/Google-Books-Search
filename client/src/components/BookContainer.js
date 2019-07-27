@@ -3,22 +3,31 @@ import Jumbotron from "./Jumbotron";
 import Container from "./Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import ResultContainer from "./ResultContainer";
 
 import API from "../utils/API";
 
 class BookContainer extends Component {
   state = {
-    result: {},
+    result: [],
     search: ""
   };
 
   componentDidMount() {
-    this.searchBooks("The Divine Comedy");
   }
 
   searchBooks = query => {
     API.search(query)
-      .then(res => this.setState({ result: res.data.items }))
+      .then(res => this.setState({ result: res.data.items
+        .map(book => {
+          return {
+            title: book.volumeInfo.title,
+            author: book.volumeInfo.authors,
+            description: book.volumeInfo.description,
+            image: book.volumeInfo.imageLinks.thumbnail,
+            link: book.volumeInfo.canonicalVolumeLink
+          }
+        }) }))
       .catch(err => console.log(err));
   };
 
@@ -33,7 +42,6 @@ class BookContainer extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     this.searchBooks(this.state.search);
-    console.log(this.state.result);
   };
 
   render() {
@@ -57,6 +65,10 @@ class BookContainer extends Component {
          <Button variant="primary" type="submit" onClick={this.handleFormSubmit}>Submit</Button>
          </Form>
         </Container>
+        <ResultContainer
+        result={this.state.result}>
+        </ResultContainer>
+   
      </div>
      
     );
