@@ -14,6 +14,10 @@ class BookContainer extends Component {
   };
 
   componentDidMount() {
+    //clear result state
+    this.setState({
+      result:[]
+    });
   }
 
   searchBooks = query => {
@@ -43,7 +47,7 @@ class BookContainer extends Component {
     event.preventDefault();
     this.searchBooks(this.state.search);
   };
-
+ 
   render() {
     return (
      <div>

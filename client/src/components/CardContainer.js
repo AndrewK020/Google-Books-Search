@@ -1,8 +1,15 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import API from "../utils/API";
+
 
 function CardContainer(props) {
+    function handleClick(event) {
+        event.preventDefault();
+        API.saveBook(props);
+    }
+
     const authors = (props.author) ?  props.author.join(", ") :"";
     return (
         <Card>
@@ -14,7 +21,7 @@ function CardContainer(props) {
           </div>
           <div className="btnContainer">
           <Button href={props.link}>Link</Button>
-          <Button variant="success">Save</Button>
+          <Button variant="success" onClick={handleClick}>Save</Button>
           </div>
         </Card>
     );

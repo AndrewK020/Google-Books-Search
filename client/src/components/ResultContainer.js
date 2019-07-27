@@ -3,8 +3,9 @@ import CardContainer from "./CardContainer";
 
 function ResultCointainer(props) {
     if (props.result.length > 0) {
-        let resultList = props.result.map(res => {
+        let resultList = props.result.map((res, index) => {
             return (<CardContainer
+            key={index}
             title={res.title}
             author={res.author}
             image={res.image}
