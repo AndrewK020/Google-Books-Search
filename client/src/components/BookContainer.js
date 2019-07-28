@@ -70,7 +70,7 @@ class BookContainer extends Component {
          </Form>
         </Container>
         <ResultContainer
-        result={this.state.result}>
+          result={this.state.result}>
         </ResultContainer>
    
      </div>

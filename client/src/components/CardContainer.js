@@ -21,7 +21,7 @@ function CardContainer(props) {
           </div>
           <div className="btnContainer">
           <Button href={props.link}>Link</Button>
-          <Button variant="success" onClick={handleClick}>Save</Button>
+          {(props.saved) ? <div></div> : <Button variant="success" onClick={handleClick}>Save</Button>}
           </div>
         </Card>
     );

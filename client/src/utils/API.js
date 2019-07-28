@@ -6,7 +6,9 @@ export default {
   search: function(query) {
     return axios.get(BASEURL + query + APIKEY);
   },
-
+  getBooks: function() {
+    return axios.get('/api/books');
+  },
   // Saves a book to the database
   saveBook: function(bookData) {
     const postData = {
@@ -16,7 +18,6 @@ export default {
       image: bookData.image,
       link: bookData.link
     }
-    console.log(postData);
     return axios.post("/api/books", postData);
   }
 };

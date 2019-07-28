@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import BookContainer from "./components/BookContainer"
+import SavedContainer from "./components/SavedContainer"
 import Nav from "./components/Nav"
 import NoMatch from "./components/NoMatch";
 
@@ -11,7 +12,7 @@ function App() {
       <Nav />
         <Switch>
           <Route exact path="/" component={BookContainer} />
-          {/* <Route exact path="/saved" component ={SavedContainer}/> */}
+          <Route exact path="/saved" component ={SavedContainer}/>
           <Route component={NoMatch} />
         </Switch>
       </div>

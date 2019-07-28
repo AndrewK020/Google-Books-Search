@@ -11,6 +11,7 @@ function ResultCointainer(props) {
             image={res.image}
             link={res.link}
             description={res.description}
+            saved={props.saved}
             />);
         });
         return (
